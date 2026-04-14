@@ -16,34 +16,34 @@ public class ChataigneMovement : MonoBehaviour
 
     void Update()
     {
-        // STOP AUTOMATIQUE si plus de signal
+        // STOP 
         if (Time.time - lastMessageTime > 0.2f)
         {
             inputX = 0f;
             inputY = 0f;
         }
 
-        // ROTATION (gauche / droite)
+        // CAT VIEW
         if (inputX > 0.1f)
             transform.localScale = new Vector3(1f, 1f, 1f);
         else if (inputX < -0.1f)
             transform.localScale = new Vector3(-1f, 1f, 1f);
 
-        // JUMP (déclenchement unique)
+        // JUMP 
         if (inputY > 0.5f && isGrounded)
         {
             verticalVelocity = jumpForce;
             isGrounded = false;
         }
 
-        // GRAVITÉ
+        // GRAVITY
         verticalVelocity += gravity * Time.deltaTime;
 
-        // MOUVEMENT FINAL
+        
         Vector3 move = new Vector3(inputX, verticalVelocity, 0f);
         transform.Translate(move * speed * Time.deltaTime);
 
-        // RESET SOL (simple)
+        // STAY ON THE ROUND
         if (transform.position.y <= 0f)
         {
             isGrounded = true;

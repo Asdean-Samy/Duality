@@ -8,10 +8,10 @@ public class Collectible : MonoBehaviour
         {
             Debug.Log("Poisson récupéré !");
 
-            // détruire l'objet
+            
             Destroy(gameObject);
 
-            // appeler la fin du jeu
+            // call endgame
             GameManager.instance.WinGame();
         }
     }
